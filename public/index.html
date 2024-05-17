@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partitura Mágicas - Organize as músicas que você já aprendeu a tocar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hub">
+        <h1>Partituras Mágicas</h1>
+        <div class="band-cards">   
+            <div class="band-card" id="Metallica" onclick="selectBand('Metallica')" >
+                <img src="images/Imagens/metallica.png" alt="Metallica"> 
+            </div>
+            <div class="band-card" id="ArtickM" onclick="selectBand('artickmonkeys')"> 
+                <img src="images/Imagens/AM.png" alt="Macacos do Ártico">
+            </div>
+            <div class="band-card" id="ironM" onclick="selectBand('IronMaiden')" >  
+                <img src="images/Imagens/iron maiden.jpg" alt="Iron Maiden">
+            </div>
+            <div class="band-card" id="Megadeth" onclick="selectBand('Megadeth')" >  
+                <img src="images/Imagens/megadeth.jpg" alt="megadeth">
+            </div>
+            <div class="band-card" id="RHCP" onclick="selectBand('RHCP')" >  
+                <img src="images/Imagens/RHCP.jpg" alt="RHCP">
+            </div>
+            <div class="band-card" id="Falling" onclick="selectBand('Falling')" >  
+                <img src="images/Imagens/Falling.jpg" alt="Falling in Reverse">
+            </div>
+            <div class="band-card" id="Guns" onclick="selectBand('Guns')" >  
+                <img src="images/Imagens/guns.jpg" alt="Guns N Roses">
+            </div>
+            <div class="band-card" id="Slipknot" onclick="selectBand('Slipknot')" >  
+                <img src="images/Imagens/slip.jpg" alt="Slipknot">
+            </div>
+            <div class="band-card" id="Kirk" onclick="selectBand('Kirk')" >  
+                <img src="images/Imagens/Kirk.jpg" alt="Kirk Hammett">
+            </div>
+        </div>    
+    </div>
+    <script>
+        function selectBand(band) {
+            localStorage.setItem('selectedBand', band);
+            window.location.href = 'albums.html';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Álbuns</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hub">
+        <h1>Escolha o Álbum</h1>
+        <div id="band-cards"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const band = localStorage.getItem('selectedBand');
+            if (band) {
+                fetch(`/albums/${band.toLowerCase()}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Álbum não encontrado');
+                        }
+                        return response.json();
+                    })
+                    .then(albums => {
+                        const container = document.getElementById('band-cards');
+                        container.innerHTML = ''; // Limpar o contêiner antes de adicionar novos elementos
+                        albums.forEach(album => {
+                            const albumDiv = document.createElement('div');
+                            albumDiv.className = 'band-card';
+                            //console.log(album)
+                            albumDiv.setAttribute("onclick", `selectMusic(${album.title})`)
+                            albumDiv.innerHTML = `
+                                <img src="${album.image}" alt="${album.title}" onerror="this.onerror=null; this.src='images/default.jpg';">
+                                <p>${album.title}</p>
+                            `;
+                            container.appendChild(albumDiv);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao carregar álbuns:', error));
+            } else {
+                console.error('Nenhuma banda selecionada');
+            }
+        });
+    </script>
+</body>
+</html>
